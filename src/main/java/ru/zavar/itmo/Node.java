@@ -1,7 +1,8 @@
-package ru.zavar.itmo.bfs;
+package ru.zavar.itmo;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public final class Node<T> {
@@ -29,6 +30,10 @@ public final class Node<T> {
 
     public Set<Node<T>> getNeighbors() {
         return Collections.unmodifiableSet(neighbors);
+    }
+
+    public List<Node<T>> getNeighborsList() {
+        return Collections.unmodifiableList(neighbors.stream().toList());
     }
 
     public void connect(Node<T> node) {

@@ -1,8 +1,12 @@
-package ru.zavar.itmo.bfs;
+package ru.zavar.itmo.dfs;
 
 import ru.zavar.itmo.Node;
 
-public class BfsTest {
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class DfsTest {
     public static void main(String[] args) {
         Node<String> odessa = new Node<>("Одесса");
         Node<String> kiev = new Node<>("Киев");
@@ -71,6 +75,6 @@ public class BfsTest {
         vilnus.connect(kaliningrad);
         brest.connect(vilnus);
 
-        BreadthFirstSearchAlgorithm.search("Самара", spb);
+        DepthFirstSearchAlgorithm.search(riga, odessa);
     }
 }

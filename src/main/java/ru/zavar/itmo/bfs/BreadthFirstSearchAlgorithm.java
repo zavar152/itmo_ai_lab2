@@ -1,5 +1,7 @@
 package ru.zavar.itmo.bfs;
 
+import ru.zavar.itmo.Node;
+
 import java.util.*;
 
 public final class BreadthFirstSearchAlgorithm {
