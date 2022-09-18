@@ -9,17 +9,11 @@ public final class DepthFirstSearchAlgorithm {
         Stack<Node<T>> stack = new Stack<>();
         stack.add(start);
         Set<Node<?>> alreadyVisited = new HashSet<>();
-        StringBuilder path = new StringBuilder();
         while (!stack.isEmpty()) {
             Node<T> element = stack.pop();
-            if (!alreadyVisited.contains(element)) {
-                path.append(element.getValue());
-                path.append(" -> ");
-                alreadyVisited.add(element);
-            }
+            alreadyVisited.add(element);
             if(element.equals(target)) {
                 alreadyVisited.clear();
-                path.delete(path.length() - 3, path.length());
                 trace(element);
                 return Optional.of(element);
             }

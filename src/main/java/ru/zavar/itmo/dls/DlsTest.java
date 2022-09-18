@@ -71,6 +71,6 @@ public class DlsTest {
         vilnus.connect(kaliningrad);
         brest.connect(vilnus);
 
-        DepthLimitedSearchAlgorithm.search(riga, odessa, 12);
+        DepthLimitedSearchAlgorithm.search(riga, odessa, 26);
     }
 }
