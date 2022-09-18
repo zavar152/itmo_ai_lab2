@@ -5,43 +5,40 @@ import ru.zavar.itmo.Node;
 import java.util.*;
 
 public final class DepthFirstSearchAlgorithm {
-    public static <T> Optional<Node<T>> search(Node<T> start, Node<T> target) {
-        Stack<Node<T>> stack = new Stack<>();
-        stack.add(start);
-        Set<Node<?>> alreadyVisited = new HashSet<>();
-        while (!stack.isEmpty()) {
-            Node<T> element = stack.pop();
-            alreadyVisited.add(element);
-            if(element.equals(target)) {
-                alreadyVisited.clear();
-                trace(element);
-                return Optional.of(element);
-            }
-            List<Node<T>> neighbours = element.getNeighborsList();
-            for (Node<T> n : neighbours) {
-                if (n != null && !alreadyVisited.contains(n)) {
-                    stack.add(n);
-                    n.setPrev(element);
+    private static final Set<Node<?>> alreadyVisited = new HashSet<>();
+    private static final List<Node<?>> path = new ArrayList<>();
+    public static <T> Optional<Node<T>> search(Node<T> start, Node<T> finish) {
+        alreadyVisited.add(start);
+        if (start == finish) {
+            alreadyVisited.clear();
+            return Optional.of(start);
+        } else {
+            for (Node<T> v : start.getNeighbors()) {
+                if (!alreadyVisited.contains(v) && search(v, finish).isPresent()) {
+                    path.add(v);
+                    alreadyVisited.clear();
+                    return Optional.of(start);
                 }
             }
         }
+        alreadyVisited.clear();
         return Optional.empty();
     }
 
-    private static void trace(Node<?> node){
-        List<Node<?>> route = new ArrayList<>();
-        while(node != null){
-            route.add(node);
-            node = node.getPrev();
+    public static void trace(Node<?> start){
+        path.add(start);
+        if(path.size() == 1) {
+            System.out.println("Путь не найден");
+            return;
         }
-        Collections.reverse(route);
+        Collections.reverse(path);
         System.out.print("Путь: ");
-        StringBuilder path = new StringBuilder();
-        route.forEach(node1 -> {
-            path.append(node1.getValue());
-            path.append(" -> ");
+        StringBuilder pathBuilder = new StringBuilder();
+        path.forEach(node1 -> {
+            pathBuilder.append(node1.getValue());
+            pathBuilder.append(" -> ");
         });
-        path.delete(path.length() - 3, path.length());
-        System.out.println(path);
+        pathBuilder.delete(pathBuilder.length() - 3, pathBuilder.length());
+        System.out.println(pathBuilder);
     }
 }

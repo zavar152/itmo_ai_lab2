@@ -1,12 +1,8 @@
-package ru.zavar.itmo.dfs;
+package ru.zavar.itmo.ids;
 
 import ru.zavar.itmo.Node;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-public class DfsTest {
+public class IdsTest {
     public static void main(String[] args) {
         Node<String> odessa = new Node<>("Одесса");
         Node<String> kiev = new Node<>("Киев");
@@ -75,7 +71,6 @@ public class DfsTest {
         vilnus.connect(kaliningrad);
         brest.connect(vilnus);
 
-        DepthFirstSearchAlgorithm.search(riga, odessa);
-        DepthFirstSearchAlgorithm.trace(riga);
+        IterativeDeepeningSearchAlgorithm.search(riga, murmansk);
     }
 }
