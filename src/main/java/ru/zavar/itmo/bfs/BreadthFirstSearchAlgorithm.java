@@ -12,7 +12,7 @@ public final class BreadthFirstSearchAlgorithm {
 
         while (!queue.isEmpty()) {
             currentNode = queue.remove();
-            System.out.println("Visited node with value: " + currentNode.getValue());
+            System.out.println("Посетили вершину: " + currentNode.getValue());
 
             if (currentNode.getValue().equals(value)) {
                 trace(currentNode);
@@ -35,15 +35,18 @@ public final class BreadthFirstSearchAlgorithm {
 
     private static void trace(Node<?> node){
         List<Node<?>> route = new ArrayList<>();
-        //Loop until node is null to reach start node
-        //becasue start.prev == null
         while(node != null){
             route.add(node);
             node = node.getPrev();
         }
-        //Reverse the route - bring start to the front
         Collections.reverse(route);
-        //Output the route
-        route.forEach(node1 -> System.out.println(node1.getValue()));
+        System.out.print("Путь: ");
+        StringBuilder path = new StringBuilder();
+        route.forEach(node1 -> {
+            path.append(node1.getValue());
+            path.append(" -> ");
+        });
+        path.delete(path.length() - 3, path.length());
+        System.out.println(path);
     }
 }

@@ -69,6 +69,6 @@ public class BfsTest {
         vilnus.connect(kaliningrad);
         brest.connect(vilnus);
 
-        BreadthFirstSearchAlgorithm.search("Самара", odessa);
+        BreadthFirstSearchAlgorithm.search("Самара", spb);
     }
 }
