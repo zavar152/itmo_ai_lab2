@@ -1,5 +1,6 @@
 package ru.zavar.itmo.dls;
 
+import ru.zavar.itmo.Graph;
 import ru.zavar.itmo.Node;
 
 import java.util.*;
@@ -7,14 +8,16 @@ import java.util.*;
 public final class DepthLimitedSearchAlgorithm {
     private static final Set<Node<?>> alreadyVisited = new HashSet<>();
     private static final List<Node<?>> path = new ArrayList<>();
-    public static <T> Optional<Node<T>> search(Node<T> start, Node<T> finish, int limit) {
+    public static <T> Optional<Node<T>> search(Graph<T> graph, T startValue, T finishValue, int limit) {
+        Node<T> start = graph.getNode(startValue).get();
+        Node<T> finish = graph.getNode(finishValue).get();
         alreadyVisited.add(start);
         if (start == finish) {
             alreadyVisited.clear();
             return Optional.of(start);
         } else if (limit != 0) {
-            for (Node<T> v : start.getNeighbors()) {
-                if (!alreadyVisited.contains(v) && search(v, finish, limit - 1).isPresent()) {
+            for (Node<T> v : graph.getAdjNodes(start.getValue())) {
+                if (!alreadyVisited.contains(v) && search(graph, v.getValue(), finishValue, limit - 1).isPresent()) {
                     path.add(v);
                     alreadyVisited.clear();
                     return Optional.of(start);

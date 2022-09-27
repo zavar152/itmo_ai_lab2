@@ -1,13 +1,14 @@
 package ru.zavar.itmo.bfs;
 
+import ru.zavar.itmo.Graph;
 import ru.zavar.itmo.Node;
 
 import java.util.*;
 
 public final class BreadthFirstSearchAlgorithm {
-    public static <T> Optional<Node<T>> search(T value, Node<T> start) {
+    public static <T> Optional<Node<T>> search(Graph<T> graph, T value, T start) {
         Queue<Node<T>> queue = new ArrayDeque<>();
-        queue.add(start);
+        queue.add(graph.getNode(start).get());
 
         Node<T> currentNode;
         Set<Node<T>> alreadyVisited = new HashSet<>();
@@ -21,7 +22,7 @@ public final class BreadthFirstSearchAlgorithm {
                 return Optional.of(currentNode);
             } else {
                 alreadyVisited.add(currentNode);
-                Set<Node<T>> neighbors = currentNode.getNeighbors();
+                List<Node<T>> neighbors = graph.getAdjNodes(currentNode.getValue());
                 Node<T> finalCurrentNode = currentNode;
                 neighbors.forEach(tNode -> {
                     if(!alreadyVisited.contains(tNode))

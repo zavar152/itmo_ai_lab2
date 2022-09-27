@@ -1,9 +1,6 @@
 package ru.zavar.itmo;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public final class Node<T> {
 
@@ -28,14 +25,6 @@ public final class Node<T> {
         return prev;
     }
 
-    public Set<Node<T>> getNeighbors() {
-        return Collections.unmodifiableSet(neighbors);
-    }
-
-    public List<Node<T>> getNeighborsList() {
-        return Collections.unmodifiableList(neighbors.stream().toList());
-    }
-
     public void connect(Node<T> node) {
         if (this == node)
             throw new IllegalArgumentException("Петли не допустимы");
@@ -43,4 +32,23 @@ public final class Node<T> {
         node.neighbors.add(this);
     }
 
+    @Override
+    public String toString() {
+        return "Node{" +
+                "value=" + value +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Node<?> node = (Node<?>) o;
+        return value.equals(node.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
+    }
 }

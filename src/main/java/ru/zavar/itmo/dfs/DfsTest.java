@@ -1,5 +1,7 @@
 package ru.zavar.itmo.dfs;
 
+import ru.zavar.itmo.Graph;
+import ru.zavar.itmo.GraphBuilder;
 import ru.zavar.itmo.Node;
 
 import java.util.ArrayList;
@@ -8,74 +10,79 @@ import java.util.List;
 
 public class DfsTest {
     public static void main(String[] args) {
-        Node<String> odessa = new Node<>("Одесса");
-        Node<String> kiev = new Node<>("Киев");
-        Node<String> simferopl = new Node<>("Симферополь");
-        Node<String> harkov = new Node<>("Харьков");
-        Node<String> doneck = new Node<>("Донецк");
-        Node<String> kishinev = new Node<>("Кишинёв");
-        Node<String> jitomir = new Node<>("Житомир");
-        Node<String> volgograd = new Node<>("Волгоград");
-        Node<String> voronez = new Node<>("Воронеж");
-        Node<String> vitebsk = new Node<>("Витебск");
-        Node<String> brest = new Node<>("Брест");
-        Node<String> kaliningrad = new Node<>("Калининград");
-        Node<String> vilnus = new Node<>("Вильнюс");
-        Node<String> daugavpils = new Node<>("Даугавпилс");
-        Node<String> kaunas = new Node<>("Каунас");
-        Node<String> tallin = new Node<>("Таллин");
-        Node<String> riga = new Node<>("Рига");
-        Node<String> spb = new Node<>("С. Петербург");
-        Node<String> yaroslavl = new Node<>("Ярославль");
-        Node<String> orel = new Node<>("Орёл");
-        Node<String> novgorod = new Node<>("Ниж. Новгород");
-        Node<String> moscow = new Node<>("Москва");
-        Node<String> kazan = new Node<>("Казань");
-        Node<String> minsk = new Node<>("Минск");
-        Node<String> ufa = new Node<>("Уфа");
-        Node<String> murmansk = new Node<>("Мурманск");
-        Node<String> samara = new Node<>("Самара");
+        GraphBuilder<String> graphBuilder = new GraphBuilder<>();
+        Graph<String> graph = graphBuilder
+                .addNode("Одесса")
+                .addNode("Киев")
+                .addNode("Симферополь")
+                .addNode("Харьков")
+                .addNode("Донецк")
+                .addNode("Кишинёв")
+                .addNode("Житомир")
+                .addNode("Волгоград")
+                .addNode("Воронеж")
+                .addNode("Витебск")
+                .addNode("Брест")
+                .addNode("Калининград")
+                .addNode("Вильнюс")
+                .addNode("Даугавпилс")
+                .addNode("Каунас")
+                .addNode("Таллин")
+                .addNode("Рига")
+                .addNode("С. Петербург")
+                .addNode("Ярославль")
+                .addNode("Орёл")
+                .addNode("Ниж. Новгород")
+                .addNode("Москва")
+                .addNode("Казань")
+                .addNode("Минск")
+                .addNode("Уфа")
+                .addNode("Мурманск")
+                .addNode("Самара")
 
-        odessa.connect(kiev);
-        simferopl.connect(harkov);
-        harkov.connect(kiev);
-        kishinev.connect(kiev);
-        kishinev.connect(doneck);
-        doneck.connect(jitomir);
-        jitomir.connect(kiev);
-        kiev.connect(vilnus);
-        doneck.connect(orel);
-        doneck.connect(moscow);
-        jitomir.connect(volgograd);
-        volgograd.connect(voronez);
-        volgograd.connect(vitebsk);
-        voronez.connect(vitebsk);
-        voronez.connect(yaroslavl);
-        vitebsk.connect(brest);
-        vitebsk.connect(vilnus);
-        vitebsk.connect(orel);
-        vitebsk.connect(novgorod);
-        vitebsk.connect(spb);
-        orel.connect(moscow);
-        novgorod.connect(moscow);
-        moscow.connect(kazan);
-        spb.connect(moscow);
-        minsk.connect(moscow);
-        minsk.connect(murmansk);
-        minsk.connect(yaroslavl);
-        murmansk.connect(spb);
-        kazan.connect(ufa);
-        ufa.connect(samara);
-        spb.connect(kaliningrad);
-        spb.connect(riga);
-        riga.connect(tallin);
-        kaunas.connect(riga);
-        kaunas.connect(vilnus);
-        daugavpils.connect(vilnus);
-        vilnus.connect(kaliningrad);
-        brest.connect(vilnus);
+                .addEdge("Одесса", "Киев")
+                .addEdge("Симферополь", "Харьков")
+                .addEdge("Харьков", "Киев")
+                .addEdge("Киев", "Кишинёв")
+                .addEdge("Киев", "Вильнюс")
+                .addEdge("Киев", "Житомир")
+                .addEdge("Кишинёв", "Донецк")
+                .addEdge("Донецк", "Житомир")
+                .addEdge("Житомир", "Волгоград")
+                .addEdge("Донецк", "Орёл")
+                .addEdge("Донецк", "Москва")
+                .addEdge("Самара", "Уфа")
+                .addEdge("Уфа", "Казань")
+                .addEdge("Казань", "Москва")
+                .addEdge("Москва", "Минск")
+                .addEdge("Минск", "Мурманск")
+                .addEdge("Москва", "С. Петербург")
+                .addEdge("Мурманск", "С. Петербург")
+                .addEdge("Минск", "Ярославль")
+                .addEdge("Москва", "Ниж. Новгород")
+                .addEdge("Москва", "Орёл")
+                .addEdge("Воронеж", "Ярославль")
+                .addEdge("Воронеж", "Витебск")
+                .addEdge("Волгоград", "Витебск")
+                .addEdge("Воронеж", "Волгоград")
+                .addEdge("Рига", "С. Петербург")
+                .addEdge("Витебск", "С. Петербург")
+                .addEdge("Калининград", "С. Петербург")
+                .addEdge("Витебск", "Орёл")
+                .addEdge("Витебск", "Ниж. Новгород")
+                .addEdge("Витебск", "Вильнюс")
+                .addEdge("Витебск", "Брест")
+                .addEdge("Брест", "Вильнюс")
+                .addEdge("Калининград", "Вильнюс")
+                .addEdge("Каунас", "Вильнюс")
+                .addEdge("Даугавпилс", "Вильнюс")
+                .addEdge("Брест", "Калининград")
+                .addEdge("Каунас", "Рига")
+                .addEdge("Таллин", "Рига")
 
-        DepthFirstSearchAlgorithm.search(riga, odessa);
-        DepthFirstSearchAlgorithm.trace(riga);
+                .build();
+
+        DepthFirstSearchAlgorithm.search(graph,"Рига", "Одесса");
+        DepthFirstSearchAlgorithm.trace(graph.getNode("Рига").get());
     }
 }
