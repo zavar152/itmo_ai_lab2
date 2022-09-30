@@ -1,9 +1,10 @@
-package ru.zavar.itmo.dls;
+package ru.zavar.itmo.test;
 
 import ru.zavar.itmo.graph.Graph;
 import ru.zavar.itmo.graph.GraphBuilder;
+import ru.zavar.itmo.algo.ids.IterativeDeepeningSearchAlgorithm;
 
-public class DlsTest {
+public class IdsTest {
     public static void main(String[] args) {
         GraphBuilder<String> graphBuilder = new GraphBuilder<>();
         Graph<String> graph = graphBuilder
@@ -77,6 +78,6 @@ public class DlsTest {
 
                 .build();
 
-        DepthLimitedSearchAlgorithm.trace(DepthLimitedSearchAlgorithm.search(graph,"Рига", "Одесса", 5).get());
+        IterativeDeepeningSearchAlgorithm.search(graph, "Рига", "Мурманск");
     }
 }

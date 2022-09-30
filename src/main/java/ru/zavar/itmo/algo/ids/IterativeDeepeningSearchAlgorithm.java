@@ -1,8 +1,8 @@
-package ru.zavar.itmo.ids;
+package ru.zavar.itmo.algo.ids;
 
 import ru.zavar.itmo.graph.Graph;
 import ru.zavar.itmo.graph.Node;
-import ru.zavar.itmo.dls.DepthLimitedSearchAlgorithm;
+import ru.zavar.itmo.algo.dls.DepthLimitedSearchAlgorithm;
 
 import java.util.Optional;
 

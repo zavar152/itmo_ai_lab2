@@ -8,6 +8,7 @@ public final class Node<T> {
     private Node<T> prev = null;
 
     public Node(T value) {
+        assert value != null;
         this.value = value;
     }
 

@@ -1,11 +1,11 @@
-package ru.zavar.itmo.bfs;
+package ru.zavar.itmo.test;
 
+import ru.zavar.itmo.algo.dls.DepthLimitedSearchAlgorithm;
 import ru.zavar.itmo.graph.Graph;
 import ru.zavar.itmo.graph.GraphBuilder;
 
-public class BfsTest {
+public class DlsTest {
     public static void main(String[] args) {
-
         GraphBuilder<String> graphBuilder = new GraphBuilder<>();
         Graph<String> graph = graphBuilder
                 .addNode("Одесса")
@@ -78,12 +78,6 @@ public class BfsTest {
 
                 .build();
 
-//        graph.getNodes().forEach(stringNode1 -> {
-//            System.out.println(stringNode1.getValue() + ":");
-//            graph.getAdjNodes(stringNode1.getValue()).forEach(System.out::println);
-//            System.out.println();
-//        });
-
-        BreadthFirstSearchAlgorithm.search(graph,"Рига", "Одесса");
+        DepthLimitedSearchAlgorithm.trace(DepthLimitedSearchAlgorithm.search(graph,"Рига", "Одесса", 5).get());
     }
 }

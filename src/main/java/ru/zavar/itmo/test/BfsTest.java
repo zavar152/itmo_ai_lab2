@@ -1,10 +1,12 @@
-package ru.zavar.itmo.dfs;
+package ru.zavar.itmo.test;
 
+import ru.zavar.itmo.algo.bfs.BreadthFirstSearchAlgorithm;
 import ru.zavar.itmo.graph.Graph;
 import ru.zavar.itmo.graph.GraphBuilder;
 
-public class DfsTest {
+public class BfsTest {
     public static void main(String[] args) {
+
         GraphBuilder<String> graphBuilder = new GraphBuilder<>();
         Graph<String> graph = graphBuilder
                 .addNode("Одесса")
@@ -77,6 +79,12 @@ public class DfsTest {
 
                 .build();
 
-        DepthFirstSearchAlgorithm.trace(DepthFirstSearchAlgorithm.search(graph,"Рига", "Одесса").get());
+//        graph.getNodes().forEach(stringNode1 -> {
+//            System.out.println(stringNode1.getValue() + ":");
+//            graph.getAdjNodes(stringNode1.getValue()).forEach(System.out::println);
+//            System.out.println();
+//        });
+
+        BreadthFirstSearchAlgorithm.search(graph,"Рига", "Одесса");
     }
 }

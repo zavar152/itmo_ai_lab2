@@ -1,4 +1,4 @@
-package ru.zavar.itmo.bfs;
+package ru.zavar.itmo.algo.bfs;
 
 import ru.zavar.itmo.graph.Graph;
 import ru.zavar.itmo.graph.Node;

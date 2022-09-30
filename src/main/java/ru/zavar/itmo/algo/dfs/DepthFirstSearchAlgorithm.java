@@ -1,14 +1,15 @@
-package ru.zavar.itmo.dls;
+package ru.zavar.itmo.algo.dfs;
 
 import ru.zavar.itmo.graph.Graph;
 import ru.zavar.itmo.graph.Node;
 
 import java.util.*;
 
-public final class DepthLimitedSearchAlgorithm {
+public final class DepthFirstSearchAlgorithm {
     private static final Set<Node<?>> alreadyVisited = new HashSet<>();
     private static final List<Node<?>> path = new ArrayList<>();
-    public static <T> Optional<Node<T>> search(Graph<T> graph, T startValue, T finishValue, int limit) {
+
+    public static <T> Optional<Node<T>> search(Graph<T> graph, T startValue, T finishValue) {
         Node<T> start = graph.getNode(startValue).get();
         Node<T> finish = graph.getNode(finishValue).get();
         alreadyVisited.add(start);
@@ -16,9 +17,9 @@ public final class DepthLimitedSearchAlgorithm {
         if (start == finish) {
             alreadyVisited.clear();
             return Optional.of(start);
-        } else if (limit != 0) {
+        } else {
             for (Node<T> v : graph.getAdjNodes(start.getValue())) {
-                if (!alreadyVisited.contains(v) && search(graph, v.getValue(), finishValue, limit - 1).isPresent()) {
+                if (!alreadyVisited.contains(v) && search(graph, v.getValue(), finishValue).isPresent()) {
                     path.add(v);
                     alreadyVisited.clear();
                     return Optional.of(start);
@@ -29,9 +30,9 @@ public final class DepthLimitedSearchAlgorithm {
         return Optional.empty();
     }
 
-    public static void trace(Node<?> start){
+    public static void trace(Node<?> start) {
         path.add(start);
-        if(path.size() == 1) {
+        if (path.size() == 1) {
             System.out.println("Путь не найден");
             return;
         }

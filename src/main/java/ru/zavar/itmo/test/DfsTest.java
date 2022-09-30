@@ -1,9 +1,10 @@
-package ru.zavar.itmo.ids;
+package ru.zavar.itmo.test;
 
+import ru.zavar.itmo.algo.dfs.DepthFirstSearchAlgorithm;
 import ru.zavar.itmo.graph.Graph;
 import ru.zavar.itmo.graph.GraphBuilder;
 
-public class IdsTest {
+public class DfsTest {
     public static void main(String[] args) {
         GraphBuilder<String> graphBuilder = new GraphBuilder<>();
         Graph<String> graph = graphBuilder
@@ -77,6 +78,6 @@ public class IdsTest {
 
                 .build();
 
-        IterativeDeepeningSearchAlgorithm.search(graph, "Рига", "Мурманск");
+        DepthFirstSearchAlgorithm.trace(DepthFirstSearchAlgorithm.search(graph,"Рига", "Одесса").get());
     }
 }

@@ -1,11 +1,12 @@
 package ru.zavar.itmo;
 
-import ru.zavar.itmo.bfs.BreadthFirstSearchAlgorithm;
-import ru.zavar.itmo.dfs.DepthFirstSearchAlgorithm;
-import ru.zavar.itmo.dls.DepthLimitedSearchAlgorithm;
+import ru.zavar.itmo.algo.bfs.BreadthFirstSearchAlgorithm;
+import ru.zavar.itmo.algo.bis.BidirectionalSearch;
+import ru.zavar.itmo.algo.dfs.DepthFirstSearchAlgorithm;
+import ru.zavar.itmo.algo.dls.DepthLimitedSearchAlgorithm;
 import ru.zavar.itmo.graph.Graph;
 import ru.zavar.itmo.graph.GraphBuilder;
-import ru.zavar.itmo.ids.IterativeDeepeningSearchAlgorithm;
+import ru.zavar.itmo.algo.ids.IterativeDeepeningSearchAlgorithm;
 
 public final class Launcher {
     public static void main(String[] args) {
@@ -85,5 +86,6 @@ public final class Launcher {
         DepthFirstSearchAlgorithm.trace(DepthFirstSearchAlgorithm.search(graph,"Рига", "Одесса").get());
         DepthLimitedSearchAlgorithm.trace(DepthLimitedSearchAlgorithm.search(graph,"Рига", "Одесса", 4).get());
         IterativeDeepeningSearchAlgorithm.search(graph, "Рига", "Одесса");
+        BidirectionalSearch.search(graph, "Рига", "Одесса");
     }
 }
