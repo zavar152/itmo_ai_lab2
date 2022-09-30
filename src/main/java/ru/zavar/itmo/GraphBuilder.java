@@ -19,7 +19,6 @@ public final class GraphBuilder<T> {
     }
 
     public Graph<T> build() {
-        //adjNodes.keySet().forEach(tNode -> adjNodes.get(tNode).forEach(tNode::connect));
         List<Node<T>> nodes = adjNodes.keySet().stream().toList();
         int[][] adjacencyMatrix = new int[nodes.size()][nodes.size()];
         for (int i = 0; i < nodes.size(); i++) {
@@ -30,12 +29,12 @@ public final class GraphBuilder<T> {
                 }
             }
         }
-        for (int i = 0; i < nodes.size(); i++) {
-            for (int j = 0; j < nodes.size(); j++) {
-                System.out.printf("%5d ", adjacencyMatrix[i][j]);
-            }
-            System.out.println();
-        }
+//        for (int i = 0; i < nodes.size(); i++) {
+//            for (int j = 0; j < nodes.size(); j++) {
+//                System.out.printf("%5d ", adjacencyMatrix[i][j]);
+//            }
+//            System.out.println();
+//        }
         return new Graph<>(adjNodes, nodes, adjacencyMatrix);
     }
 

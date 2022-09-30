@@ -5,12 +5,10 @@ import java.util.*;
 public final class Node<T> {
 
     private final T value;
-    private final Set<Node<T>> neighbors;
     private Node<T> prev = null;
 
     public Node(T value) {
         this.value = value;
-        this.neighbors = new HashSet<>();
     }
 
     public T getValue() {
@@ -23,13 +21,6 @@ public final class Node<T> {
 
     public Node<T> getPrev() {
         return prev;
-    }
-
-    public void connect(Node<T> node) {
-        if (this == node)
-            throw new IllegalArgumentException("Петли не допустимы");
-        this.neighbors.add(node);
-        node.neighbors.add(this);
     }
 
     @Override
