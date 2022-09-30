@@ -1,12 +1,13 @@
 package ru.zavar.itmo.bfs;
 
-import ru.zavar.itmo.Graph;
-import ru.zavar.itmo.Node;
+import ru.zavar.itmo.graph.Graph;
+import ru.zavar.itmo.graph.Node;
 
 import java.util.*;
 
 public final class BreadthFirstSearchAlgorithm {
-    public static <T> Optional<Node<T>> search(Graph<T> graph, T value, T start) {
+    public static <T> Optional<Node<T>> search(Graph<T> graph, T start, T finish) {
+        System.out.println("Поиск в ширину: ");
         Queue<Node<T>> queue = new ArrayDeque<>();
         queue.add(graph.getNode(start).get());
 
@@ -17,7 +18,7 @@ public final class BreadthFirstSearchAlgorithm {
             currentNode = queue.remove();
             System.out.println("Посетили вершину: " + currentNode.getValue());
 
-            if (currentNode.getValue().equals(value)) {
+            if (currentNode.getValue().equals(finish)) {
                 trace(currentNode);
                 return Optional.of(currentNode);
             } else {
@@ -40,7 +41,9 @@ public final class BreadthFirstSearchAlgorithm {
         List<Node<?>> route = new ArrayList<>();
         while(node != null){
             route.add(node);
-            node = node.getPrev();
+            Node<?> temp = node.getPrev();
+            node.setPrev(null);
+            node = temp;
         }
         Collections.reverse(route);
         System.out.print("Путь: ");
@@ -51,5 +54,6 @@ public final class BreadthFirstSearchAlgorithm {
         });
         path.delete(path.length() - 3, path.length());
         System.out.println(path);
+        System.out.println();
     }
 }

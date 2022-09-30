@@ -1,17 +1,19 @@
 package ru.zavar.itmo.dfs;
 
-import ru.zavar.itmo.Graph;
-import ru.zavar.itmo.Node;
+import ru.zavar.itmo.graph.Graph;
+import ru.zavar.itmo.graph.Node;
 
 import java.util.*;
 
 public final class DepthFirstSearchAlgorithm {
     private static final Set<Node<?>> alreadyVisited = new HashSet<>();
     private static final List<Node<?>> path = new ArrayList<>();
+
     public static <T> Optional<Node<T>> search(Graph<T> graph, T startValue, T finishValue) {
         Node<T> start = graph.getNode(startValue).get();
         Node<T> finish = graph.getNode(finishValue).get();
         alreadyVisited.add(start);
+        System.out.println("Посетили верщину: " + start.getValue());
         if (start == finish) {
             alreadyVisited.clear();
             return Optional.of(start);
@@ -28,9 +30,13 @@ public final class DepthFirstSearchAlgorithm {
         return Optional.empty();
     }
 
-    public static void trace(Node<?> start){
+    public static <T> Optional<Node<T>> search2(Graph<T> graph, T startValue, T finishValue) {
+        return Optional.empty();
+    }
+
+    public static void trace(Node<?> start) {
         path.add(start);
-        if(path.size() == 1) {
+        if (path.size() == 1) {
             System.out.println("Путь не найден");
             return;
         }
@@ -43,5 +49,7 @@ public final class DepthFirstSearchAlgorithm {
         });
         pathBuilder.delete(pathBuilder.length() - 3, pathBuilder.length());
         System.out.println(pathBuilder);
+        path.clear();
+        System.out.println();
     }
 }

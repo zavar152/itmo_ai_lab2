@@ -1,4 +1,4 @@
-package ru.zavar.itmo;
+package ru.zavar.itmo.graph;
 
 import java.util.List;
 import java.util.Map;
@@ -21,6 +21,10 @@ public final class Graph<T> {
 
     public List<Node<T>> getNodes() {
         return nodes;
+    }
+
+    public int nodesCount() {
+        return nodes.size();
     }
 
     public Optional<Node<T>> getNode(T value) {

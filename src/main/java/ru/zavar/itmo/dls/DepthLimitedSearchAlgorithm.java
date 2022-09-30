@@ -1,7 +1,7 @@
 package ru.zavar.itmo.dls;
 
-import ru.zavar.itmo.Graph;
-import ru.zavar.itmo.Node;
+import ru.zavar.itmo.graph.Graph;
+import ru.zavar.itmo.graph.Node;
 
 import java.util.*;
 
@@ -12,6 +12,7 @@ public final class DepthLimitedSearchAlgorithm {
         Node<T> start = graph.getNode(startValue).get();
         Node<T> finish = graph.getNode(finishValue).get();
         alreadyVisited.add(start);
+        System.out.println("Посетили верщину: " + start.getValue());
         if (start == finish) {
             alreadyVisited.clear();
             return Optional.of(start);
@@ -43,5 +44,7 @@ public final class DepthLimitedSearchAlgorithm {
         });
         pathBuilder.delete(pathBuilder.length() - 3, pathBuilder.length());
         System.out.println(pathBuilder);
+        path.clear();
+        System.out.println();
     }
 }

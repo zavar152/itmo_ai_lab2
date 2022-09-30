@@ -1,9 +1,13 @@
-package ru.zavar.itmo.ids;
+package ru.zavar.itmo;
 
+import ru.zavar.itmo.bfs.BreadthFirstSearchAlgorithm;
+import ru.zavar.itmo.dfs.DepthFirstSearchAlgorithm;
+import ru.zavar.itmo.dls.DepthLimitedSearchAlgorithm;
 import ru.zavar.itmo.graph.Graph;
 import ru.zavar.itmo.graph.GraphBuilder;
+import ru.zavar.itmo.ids.IterativeDeepeningSearchAlgorithm;
 
-public class IdsTest {
+public final class Launcher {
     public static void main(String[] args) {
         GraphBuilder<String> graphBuilder = new GraphBuilder<>();
         Graph<String> graph = graphBuilder
@@ -77,6 +81,9 @@ public class IdsTest {
 
                 .build();
 
-        IterativeDeepeningSearchAlgorithm.search(graph, "Рига", "Мурманск");
+        BreadthFirstSearchAlgorithm.search(graph,"Рига", "Одесса");
+        DepthFirstSearchAlgorithm.trace(DepthFirstSearchAlgorithm.search(graph,"Рига", "Одесса").get());
+        DepthLimitedSearchAlgorithm.trace(DepthLimitedSearchAlgorithm.search(graph,"Рига", "Одесса", 4).get());
+        IterativeDeepeningSearchAlgorithm.search(graph, "Рига", "Одесса");
     }
 }

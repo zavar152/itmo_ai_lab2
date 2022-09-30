@@ -1,4 +1,4 @@
-package ru.zavar.itmo;
+package ru.zavar.itmo.graph;
 
 import java.util.*;
 

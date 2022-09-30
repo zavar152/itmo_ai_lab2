@@ -1,8 +1,7 @@
 package ru.zavar.itmo.dls;
 
-import ru.zavar.itmo.Graph;
-import ru.zavar.itmo.GraphBuilder;
-import ru.zavar.itmo.Node;
+import ru.zavar.itmo.graph.Graph;
+import ru.zavar.itmo.graph.GraphBuilder;
 
 public class DlsTest {
     public static void main(String[] args) {
@@ -78,7 +77,6 @@ public class DlsTest {
 
                 .build();
 
-        DepthLimitedSearchAlgorithm.search(graph,"Рига", "Одесса", 4);
-        DepthLimitedSearchAlgorithm.trace(graph.getNode("Рига").get());
+        DepthLimitedSearchAlgorithm.trace(DepthLimitedSearchAlgorithm.search(graph,"Рига", "Одесса", 5).get());
     }
 }

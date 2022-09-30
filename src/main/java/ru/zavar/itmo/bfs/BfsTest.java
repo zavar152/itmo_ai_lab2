@@ -1,8 +1,7 @@
 package ru.zavar.itmo.bfs;
 
-import ru.zavar.itmo.Graph;
-import ru.zavar.itmo.GraphBuilder;
-import ru.zavar.itmo.Node;
+import ru.zavar.itmo.graph.Graph;
+import ru.zavar.itmo.graph.GraphBuilder;
 
 public class BfsTest {
     public static void main(String[] args) {
@@ -79,12 +78,12 @@ public class BfsTest {
 
                 .build();
 
-        graph.getNodes().forEach(stringNode1 -> {
-            System.out.println(stringNode1.getValue() + ":");
-            graph.getAdjNodes(stringNode1.getValue()).forEach(System.out::println);
-            System.out.println();
-        });
+//        graph.getNodes().forEach(stringNode1 -> {
+//            System.out.println(stringNode1.getValue() + ":");
+//            graph.getAdjNodes(stringNode1.getValue()).forEach(System.out::println);
+//            System.out.println();
+//        });
 
-        BreadthFirstSearchAlgorithm.search(graph,"Самара", "С. Петербург");
+        BreadthFirstSearchAlgorithm.search(graph,"Рига", "Одесса");
     }
 }

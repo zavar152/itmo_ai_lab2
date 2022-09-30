@@ -1,12 +1,7 @@
 package ru.zavar.itmo.dfs;
 
-import ru.zavar.itmo.Graph;
-import ru.zavar.itmo.GraphBuilder;
-import ru.zavar.itmo.Node;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import ru.zavar.itmo.graph.Graph;
+import ru.zavar.itmo.graph.GraphBuilder;
 
 public class DfsTest {
     public static void main(String[] args) {
@@ -82,7 +77,6 @@ public class DfsTest {
 
                 .build();
 
-        DepthFirstSearchAlgorithm.search(graph,"Рига", "Одесса");
-        DepthFirstSearchAlgorithm.trace(graph.getNode("Рига").get());
+        DepthFirstSearchAlgorithm.trace(DepthFirstSearchAlgorithm.search(graph,"Рига", "Одесса").get());
     }
 }

@@ -1,7 +1,7 @@
 package ru.zavar.itmo.ids;
 
-import ru.zavar.itmo.Graph;
-import ru.zavar.itmo.Node;
+import ru.zavar.itmo.graph.Graph;
+import ru.zavar.itmo.graph.Node;
 import ru.zavar.itmo.dls.DepthLimitedSearchAlgorithm;
 
 import java.util.Optional;
