@@ -2,7 +2,7 @@ package ru.zavar.itmo.graph;
 
 import java.util.*;
 
-public final class Node<T> {
+public class Node<T> {
 
     private final T value;
     private Node<T> prev = null;

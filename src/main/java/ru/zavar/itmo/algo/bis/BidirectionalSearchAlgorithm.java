@@ -5,7 +5,7 @@ import ru.zavar.itmo.graph.Node;
 
 import java.util.*;
 
-public final class BidirectionalSearch {
+public final class BidirectionalSearchAlgorithm {
     private static <T> void bfs(Graph<T> graph, Queue<Node<T>> queue, Set<Node<T>> alreadyVisited, HashMap<Node<T>, Node<T>> parent) {
         Node<T> current = queue.poll();
         for (Node<T> i : graph.getAdjNodes(current.getValue())) {
@@ -72,7 +72,7 @@ public final class BidirectionalSearch {
             path.add(tParent.get(temp));
             temp = tParent.get(temp);
         }
-        System.out.println("Путь:");
+        System.out.print("Путь: ");
         StringBuilder pathBuilder = new StringBuilder();
         path.forEach(node1 -> {
             pathBuilder.append(node1.getValue());

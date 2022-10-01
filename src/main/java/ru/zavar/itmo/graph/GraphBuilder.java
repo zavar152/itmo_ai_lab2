@@ -4,9 +4,20 @@ import java.util.*;
 
 public final class GraphBuilder<T> {
     private final Map<Node<T>, List<Node<T>>> adjNodes = new HashMap<>();
+    private final Map<Node<T>, Integer> heuristic = new HashMap<>();
+    private final Map<AbstractMap.SimpleEntry<Node<T>, Node<T>>, Integer> distance = new HashMap<>();
 
     public GraphBuilder<T> addNode(T value) {
-        adjNodes.putIfAbsent(new Node<>(value), new ArrayList<>());
+        Node<T> tNode = new Node<>(value);
+        adjNodes.putIfAbsent(tNode, new ArrayList<>());
+        heuristic.putIfAbsent(tNode, -1);
+        return this;
+    }
+
+    public GraphBuilder<T> addNode(T value, int h) {
+        Node<T> tNode = new Node<>(value);
+        adjNodes.putIfAbsent(tNode, new ArrayList<>());
+        heuristic.putIfAbsent(tNode, h);
         return this;
     }
 
@@ -15,6 +26,18 @@ public final class GraphBuilder<T> {
         Node<T> node2 = new Node<>(value2);
         adjNodes.get(node1).add(node2);
         adjNodes.get(node2).add(node1);
+        distance.putIfAbsent(new AbstractMap.SimpleEntry<>(node1, node2), -1);
+        distance.putIfAbsent(new AbstractMap.SimpleEntry<>(node2, node1), -1);
+        return this;
+    }
+
+    public GraphBuilder<T> addEdge(T value1, T value2, int dist) {
+        Node<T> node1 = new Node<>(value1);
+        Node<T> node2 = new Node<>(value2);
+        adjNodes.get(node1).add(node2);
+        adjNodes.get(node2).add(node1);
+        distance.putIfAbsent(new AbstractMap.SimpleEntry<>(node1, node2), dist);
+        distance.putIfAbsent(new AbstractMap.SimpleEntry<>(node2, node1), dist);
         return this;
     }
 
@@ -35,7 +58,7 @@ public final class GraphBuilder<T> {
 //            }
 //            System.out.println();
 //        }
-        return new Graph<>(adjNodes, nodes, adjacencyMatrix);
+        return new Graph<>(adjNodes, nodes, adjacencyMatrix, heuristic, distance);
     }
 
 }
