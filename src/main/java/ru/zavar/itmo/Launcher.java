@@ -1,5 +1,6 @@
 package ru.zavar.itmo;
 
+import ru.zavar.itmo.algo.as.ASearchAlgorithm;
 import ru.zavar.itmo.algo.best.BestFirstSearchAlgorithm;
 import ru.zavar.itmo.algo.bfs.BreadthFirstSearchAlgorithm;
 import ru.zavar.itmo.algo.bis.BidirectionalSearchAlgorithm;
@@ -83,11 +84,12 @@ public final class Launcher {
 
                 .build();
 
-//        BreadthFirstSearchAlgorithm.search(graph,"Рига", "Одесса");
-//        DepthFirstSearchAlgorithm.trace(DepthFirstSearchAlgorithm.search(graph,"Рига", "Одесса").get());
-//        DepthLimitedSearchAlgorithm.trace(DepthLimitedSearchAlgorithm.search(graph,"Рига", "Одесса", 4).get());
-//        IterativeDeepeningSearchAlgorithm.search(graph, "Рига", "Одесса");
-//        BidirectionalSearchAlgorithm.search(graph, "Рига", "Одесса");
+        BreadthFirstSearchAlgorithm.search(graph,"Рига", "Одесса");
+        DepthFirstSearchAlgorithm.trace(DepthFirstSearchAlgorithm.search(graph,"Рига", "Одесса").get());
+        DepthLimitedSearchAlgorithm.trace(DepthLimitedSearchAlgorithm.search(graph,"Рига", "Одесса", 4).get());
+        IterativeDeepeningSearchAlgorithm.search(graph, "Рига", "Одесса");
+        BidirectionalSearchAlgorithm.search(graph, "Рига", "Одесса");
         BestFirstSearchAlgorithm.search(graph, "Рига", "Одесса");
+        ASearchAlgorithm.search(graph, "Рига", "Одесса");
     }
 }
