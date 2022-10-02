@@ -85,8 +85,8 @@ public final class Launcher {
                 .build();
 
         BreadthFirstSearchAlgorithm.search(graph,"Рига", "Одесса");
-        DepthFirstSearchAlgorithm.trace(DepthFirstSearchAlgorithm.search(graph,"Рига", "Одесса").get());
-        DepthLimitedSearchAlgorithm.trace(DepthLimitedSearchAlgorithm.search(graph,"Рига", "Одесса", 4).get());
+        DepthFirstSearchAlgorithm.search(graph,"Рига", "Одесса");
+        DepthLimitedSearchAlgorithm.search(graph,"Рига", "Одесса", 4);
         IterativeDeepeningSearchAlgorithm.search(graph, "Рига", "Одесса");
         BidirectionalSearchAlgorithm.search(graph, "Рига", "Одесса");
         BestFirstSearchAlgorithm.search(graph, "Рига", "Одесса");

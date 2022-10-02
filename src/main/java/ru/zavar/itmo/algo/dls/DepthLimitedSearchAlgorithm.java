@@ -8,7 +8,15 @@ import java.util.*;
 public final class DepthLimitedSearchAlgorithm {
     private static final Set<Node<?>> alreadyVisited = new HashSet<>();
     private static final List<Node<?>> path = new ArrayList<>();
+
     public static <T> Optional<Node<T>> search(Graph<T> graph, T startValue, T finishValue, int limit) {
+        System.out.println("Поиск в глубину с ограничением: ");
+        Optional<Node<T>> tNode = search0(graph, startValue, finishValue, limit);
+        tNode.ifPresent(DepthLimitedSearchAlgorithm::trace);
+        return tNode;
+    }
+
+    private static <T> Optional<Node<T>> search0(Graph<T> graph, T startValue, T finishValue, int limit) {
         Node<T> start = graph.getNode(startValue).get();
         Node<T> finish = graph.getNode(finishValue).get();
         alreadyVisited.add(start);
@@ -18,7 +26,7 @@ public final class DepthLimitedSearchAlgorithm {
             return Optional.of(start);
         } else if (limit != 0) {
             for (Node<T> v : graph.getAdjNodes(start.getValue())) {
-                if (!alreadyVisited.contains(v) && search(graph, v.getValue(), finishValue, limit - 1).isPresent()) {
+                if (!alreadyVisited.contains(v) && search0(graph, v.getValue(), finishValue, limit - 1).isPresent()) {
                     path.add(v);
                     alreadyVisited.clear();
                     return Optional.of(start);
@@ -29,7 +37,7 @@ public final class DepthLimitedSearchAlgorithm {
         return Optional.empty();
     }
 
-    public static void trace(Node<?> start){
+    private static void trace(Node<?> start){
         path.add(start);
         if(path.size() == 1) {
             System.out.println("Путь не найден");

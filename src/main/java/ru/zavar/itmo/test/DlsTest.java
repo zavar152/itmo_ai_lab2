@@ -78,6 +78,6 @@ public class DlsTest {
 
                 .build();
 
-        DepthLimitedSearchAlgorithm.trace(DepthLimitedSearchAlgorithm.search(graph,"Рига", "Одесса", 5).get());
+        DepthLimitedSearchAlgorithm.search(graph,"Рига", "Одесса", 5);
     }
 }

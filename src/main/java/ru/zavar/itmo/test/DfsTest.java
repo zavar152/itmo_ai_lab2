@@ -78,6 +78,6 @@ public class DfsTest {
 
                 .build();
 
-        DepthFirstSearchAlgorithm.trace(DepthFirstSearchAlgorithm.search(graph,"Рига", "Одесса").get());
+        DepthFirstSearchAlgorithm.search(graph,"Рига", "Одесса");
     }
 }

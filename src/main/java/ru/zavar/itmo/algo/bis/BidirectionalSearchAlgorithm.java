@@ -26,6 +26,7 @@ public final class BidirectionalSearchAlgorithm {
     }
 
     public static <T> Optional<Node<T>> search(Graph<T> graph, T start, T finish) {
+        System.out.println("Двунаправленный поиск:");
         Node<T> s = graph.getNode(start).get();
         Node<T> t = graph.getNode(finish).get();
         Set<Node<T>> sAlreadyVisited = new HashSet<>();

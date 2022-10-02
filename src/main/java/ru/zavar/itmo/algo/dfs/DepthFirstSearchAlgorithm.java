@@ -10,6 +10,13 @@ public final class DepthFirstSearchAlgorithm {
     private static final List<Node<?>> path = new ArrayList<>();
 
     public static <T> Optional<Node<T>> search(Graph<T> graph, T startValue, T finishValue) {
+        Optional<Node<T>> tNode = search0(graph, startValue, finishValue);
+        tNode.ifPresent(DepthFirstSearchAlgorithm::trace);
+        return tNode;
+    }
+
+    private static <T> Optional<Node<T>> search0(Graph<T> graph, T startValue, T finishValue) {
+        System.out.println("Поиск в глубину: ");
         Node<T> start = graph.getNode(startValue).get();
         Node<T> finish = graph.getNode(finishValue).get();
         alreadyVisited.add(start);
@@ -19,7 +26,7 @@ public final class DepthFirstSearchAlgorithm {
             return Optional.of(start);
         } else {
             for (Node<T> v : graph.getAdjNodes(start.getValue())) {
-                if (!alreadyVisited.contains(v) && search(graph, v.getValue(), finishValue).isPresent()) {
+                if (!alreadyVisited.contains(v) && search0(graph, v.getValue(), finishValue).isPresent()) {
                     path.add(v);
                     alreadyVisited.clear();
                     return Optional.of(start);
@@ -30,7 +37,7 @@ public final class DepthFirstSearchAlgorithm {
         return Optional.empty();
     }
 
-    public static void trace(Node<?> start) {
+    private static void trace(Node<?> start) {
         path.add(start);
         if (path.size() == 1) {
             System.out.println("Путь не найден");
